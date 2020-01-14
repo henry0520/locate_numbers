@@ -9,7 +9,9 @@ Welcome to the locate-numbersreadme, if you're reading this you're probably inte
 
 ## Requirements
 
-The task is to write an API that get the location of each number from a CSV file using [Libphone numbers library](https://pypi.org/project/phonenumbers/). We provide the numbers.csv in this repo, please generate and output.csv and include it in your solution.
+We have two tasks for you, 
+1. Write an API that get the location of each number from a CSV file using [Libphone numbers library](https://pypi.org/project/phonenumbers/). We provide the numbers.csv in this repo, please generate and output.csv and include it in your solution.
+2. Write an API that get a closest phone number based on another phone number 
 
 After that please write a simple markdown file with some ideas about how you can improve the process time since the libphone library is quite slow. 
 
@@ -32,11 +34,18 @@ numbers, valid, location
 ...
 ````
 
-### Example cURL command
+### Task 1 Example cURL command
 
 ````shell
 curl -i -X POST -H "Content-Type: multipart/form-data" -F "numbers=@numbers.csv" http://localhost:9000/locate_numbers
 ````
+
+### Task 2 Example cURL command
+
+````shell
+curl http://localhost:9000/locate_numbers?number=+13101231234
+````
+Result could be (213) 416-0509, since (310) 123 1234 and (213) 416-0509 are a Los Angeles phone number.
 
 ## Finished?
 
