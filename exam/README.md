@@ -18,7 +18,7 @@
 # Once you have uploaded the file to http://<hostname.com>/locate_numbers
 # Wait for more or less 10 minutes to finished the job task in the background
 # After 10 minutes the data is available and you can curl it like below:
-# curl http://<hostname>/locate_numbers?number=+13101231234
+# curl http://<hostname.com>/locate_numbers?number=+13101231234
 
 # For the output.csv
 # You can use the django command like this
