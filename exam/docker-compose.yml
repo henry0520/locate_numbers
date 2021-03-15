@@ -1,0 +1,49 @@
+version: '3'
+services:
+  db:
+    image: postgres
+    environment:
+      - POSTGRES_DB=exam
+      - POSTGRES_USER=exam
+      - POSTGRES_PASSWORD=exam
+  exam:
+    build: .
+    command: bash -c "python manage.py migrate && python manage.py runserver 0.0.0.0:80"
+    volumes:
+      - .:/opt/exam
+    ports:
+      - "80:80"
+    depends_on:
+      - db
+      - rabbitmq
+      - celeryd
+
+  celeryd:
+    build: .
+    command: celery worker --workdir /opt/exam/ -A exam --autoscale=10,3 -E --pidfile=/tmp/celeryd.pid -l DEBUG
+    restart: always
+    volumes:
+      - .:/opt/exam
+    links:
+      - rabbitmq
+    depends_on:
+      - db
+      - rabbitmq
+    environment:
+      - C_FORCE_ROOT="true"
+
+  rabbitmq:
+    image: rabbitmq:latest
+    container_name: rabbitmq
+    restart: always
+    ports:
+      - "5672:5672"
+    ulimits:
+      nofile: 51200
+    environment:
+      - RABBITMQ_DEFAULT_USER=exam
+      - RABBITMQ_DEFAULT_PASS=exam
+      - RABBITMQ_DEFAULT_VHOST=/exam
+    deploy:
+      mode: replicated
+      replicas: 10
