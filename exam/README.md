@@ -1,3 +1,4 @@
+# Make sure you are running Ubuntu 20.04
 # Instruction how to deploy
 # ~ cd exam
 # ~ docker-compose build
