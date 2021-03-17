@@ -1,5 +1,4 @@
 # Instruction how to deploy
-# unzip the exam zip file
 # ~ cd exam
 # ~ docker-compose build
 # ~ docker-compose run -p 80:80 -d exam
