@@ -10,5 +10,5 @@ from django.conf.urls import url
 from .views import locate_view
 
 urlpatterns = [
-    url(r'^locate_number/?$', locate_view.LocateView.as_view()),
+    url(r'^locate_numbers/?$', locate_view.LocateView.as_view()),
 ]
