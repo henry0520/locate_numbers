@@ -33,4 +33,4 @@
 
 # I also created a models and those are Location and Number running in posgresql, the Location is the list of the location inside the csv number that has a valid location and I have created Many to Many relationship because some of the number has a more that one location listed in phonenumbers library.
 
-# I also implement the celery task and rabbitmq as broker because the phonenumbers is taking long during the POST method request to this endpoint http://<hostname.com>/locate_numbers it has now a better implementation compare for not having a celery task.
+# I also implemented the celery task and rabbitmq as broker because the phonenumbers is taking long during the POST method request to this endpoint http://<hostname.com>/locate_numbers it has now a better implementation compare for not having a celery task.
